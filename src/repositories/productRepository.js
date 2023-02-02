@@ -23,15 +23,19 @@ const ProductRepositories = {
     }
   },
 
-  find: async ({ page, limit, q }) => {
+  find: async ({ page, limit, q, price }) => {
     try {
       const _page = page ? (Number(page) >= 1 ? Number(page) : 1) : 1
       const _limit = limit ? (Number(limit) >= 1 ? Number(limit) : 10) : 10
+      let _price = price.split('-').map((_i) => Number(_i))
+
+      console.log('🚀🚀🚀 ~ find: ~ _price', _price)
 
       let where = {}
 
       if (q) {
         where = {
+          ...where,
           [Op.or]: [
             {
               title: {
@@ -42,6 +46,15 @@ const ProductRepositories = {
         }
       }
 
+      if (price) {
+        where = {
+          ...where,
+          price: {
+            [Op.between]: _price,
+          },
+        }
+      }
+
       const items = await ProductModel.findAll({
         where,
         include,
@@ -49,6 +62,7 @@ const ProductRepositories = {
         offset: (_page - 1) * _limit,
         order: [['createdAt', 'DESC']],
       })
+
       const total_items = await ProductModel.count()
 
       return {
