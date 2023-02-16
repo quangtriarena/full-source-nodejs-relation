@@ -4,6 +4,8 @@ import CategoryRoutes from './categoryRoute.js'
 import VariantRoutes from './variantRoute.js'
 import OrderRoutes from './orderRoute.js'
 import StoreRoutes from './storeRoute.js'
+import AuthRoutes from './auth.js'
+import UserRoutes from './userRoute.js'
 
 export default function AdminRoutes(app) {
   HomeRoute(app)
@@ -12,4 +14,6 @@ export default function AdminRoutes(app) {
   VariantRoutes(app)
   OrderRoutes(app)
   StoreRoutes(app)
+  AuthRoutes(app)
+  UserRoutes(app)
 }
