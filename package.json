@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon --inspect index.js",
+    "dev": "nodemon --inspect index.js",
+    "ngrok": "concurrently \"yarn dev\" \"ngrok http --subdomain=arena-app-tt --region=ap 8080\" ",
     "test": "echo \"Error: no test specified\" && exit 1",
     "bulk_products": "node ./src/mocks/productGenerate.js",
     "bulk_categories": "node ./src/mocks/categoryGenerate.js",
@@ -30,6 +31,7 @@
     "sequelize": "^6.28.0"
   },
   "devDependencies": {
+    "concurrently": "^7.6.0",
     "nodemon": "^2.0.20",
     "prettier": "^2.8.3"
   }
