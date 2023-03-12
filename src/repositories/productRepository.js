@@ -27,9 +27,7 @@ const ProductRepositories = {
     try {
       const _page = page ? (Number(page) >= 1 ? Number(page) : 1) : 1
       const _limit = limit ? (Number(limit) >= 1 ? Number(limit) : 10) : 10
-      let _price = price.split('-').map((_i) => Number(_i))
-
-      console.log('🚀🚀🚀 ~ find: ~ _price', _price)
+      let _price = price?.split('-').map((_i) => Number(_i)) || ''
 
       let where = {}
 

@@ -11,6 +11,10 @@ const AuthControllers = {
     try {
       const { user_name, email, password } = req.body
 
+      if (!user_name && !email && !password) {
+        throw new Error('All fields are required')
+      }
+
       const salt = await bcrypt.genSalt(10)
       const hashed = await bcrypt.hash(password, salt)
 
@@ -20,9 +24,16 @@ const AuthControllers = {
         password: hashed,
       }
 
-      const data = await Model.create(newUser)
+      const [user, created] = await Model.findOrCreate({
+        where: { email: email },
+        defaults: newUser,
+      })
 
-      return ResponseHandle.success(res, data)
+      if (!created) {
+        throw new Error('User already exists')
+      }
+
+      return ResponseHandle.success(res, user)
     } catch (error) {
       return ResponseHandle.error(res, error)
     }

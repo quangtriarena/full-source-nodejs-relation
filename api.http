@@ -1,0 +1,12 @@
+GET http://localhost:8080/api/products
+
+###
+
+POST http://localhost:8080/v1/auth/register
+Content-Type: application/json
+
+{
+  "user_name": "tri",
+  "email": "tri4@gmail.com",
+  "password": "123"
+}
