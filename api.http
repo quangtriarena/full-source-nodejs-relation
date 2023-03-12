@@ -10,3 +10,10 @@ Content-Type: application/json
   "email": "tri4@gmail.com",
   "password": "123"
 }
+
+###
+
+GET  http://localhost:8080/api/users
+
+###
+GET https://arena-app-tt.ap.ngrok.io/api/products

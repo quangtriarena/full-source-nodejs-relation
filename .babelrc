@@ -1,5 +1,5 @@
 {
   "presets": [
-    "@babel/preset-env"
+    "@babel/preset-env" // sử dụng mode này để có thể sử dụng import và cả require và hơn thế nữa
   ]
 }

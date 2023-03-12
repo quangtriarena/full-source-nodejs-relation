@@ -6,6 +6,8 @@
   "scripts": {
     "start": "nodemon --exec babel-node --inspect index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "ngrok": "ngrok http --subdomain=arena-app-tt --region=ap 8080",
+    "dev": "concurrently \"yarn ngrok\" \"yarn start\"",
     "bulk_products": "node ./src/mocks/productGenerate.js",
     "bulk_categories": "node ./src/mocks/categoryGenerate.js",
     "bulk_stores": "node ./src/mocks/storeGenerate.js",
@@ -34,6 +36,7 @@
     "@babel/core": "^7.21.0",
     "@babel/node": "^7.20.7",
     "@babel/preset-env": "^7.20.2",
+    "concurrently": "^7.6.0",
     "nodemon": "^2.0.20",
     "prettier": "^2.8.3"
   }
