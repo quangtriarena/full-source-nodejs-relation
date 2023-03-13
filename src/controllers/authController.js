@@ -44,7 +44,7 @@ const AuthControllers = {
       let user = await Model.findOne({ where: { user_name: req.body.user_name }, raw: true })
 
       if (!user) {
-        throw new Error('Wrong username')
+        throw new Error('Wrong username / email')
       }
 
       /**

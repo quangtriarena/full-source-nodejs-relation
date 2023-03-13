@@ -4,7 +4,9 @@ const ResponseHandle = {
   },
 
   error: (res, error, status) => {
-    res.status(status | 400).json({ success: false, error: { ...error, message: error.message } })
+    let message = error.message
+
+    res.status(status | 400).json({ success: false, error: { message } })
   },
 }
 

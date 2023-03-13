@@ -6,7 +6,7 @@ POST http://localhost:8080/v1/auth/register
 Content-Type: application/json
 
 {
-  "user_name": "tri",
+  "user_name": "t",
   "email": "tri4@gmail.com",
   "password": "123"
 }
@@ -16,4 +16,25 @@ Content-Type: application/json
 GET  http://localhost:8080/api/users
 
 ###
-GET https://arena-app-tt.ap.ngrok.io/api/products
+GET https://arena-app-tt.ap.ngrok.io/api/users
+Content-Type: application/json
+
+###
+POST http://localhost:8080/v1/auth/login
+Content-Type: application/json
+
+{
+  "user_name": "tri",
+  "password":"123"
+}
+
+###
+GET https://arena-app-tt.ap.ngrok.io/api/users
+Content-Type: application/json
+headers: 
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiYWRtaW4iOmZhbHNlLCJpYXQiOjE2Nzg3MjE5NDYsImV4cCI6MTY3ODcyMTk2Nn0.Ax_Ehy2JJuwevAP3nRpGyucncEti9ZNasqioIWUMlCs
+
+###
+GET http://localhost:8080/private/customers/count
+headers: 
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiYWRtaW4iOmZhbHNlLCJpYXQiOjE2Nzg3MjE5NzMsImV4cCI6MTY3ODcyMTk5M30.I5d2huzP6CzLE_njLJw1T7g4_3HZ8bFfFtU7J-PWBeA
