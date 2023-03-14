@@ -21,6 +21,7 @@ const AuthMiddleware = {
         })
       }
 
+      // Lưu thông tin người dùng vào request
       req.user = user
       next()
     })

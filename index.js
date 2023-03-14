@@ -5,6 +5,7 @@ import dotenv from 'dotenv'
 import express from 'express'
 import AdminRoutes from './src/routers'
 import PrivateRoute from './src/routers/private'
+import RouterV1 from './src/routers/v1'
 
 dotenv.config()
 
@@ -62,6 +63,14 @@ AdminRoutes(app)
 PrivateRoute(app)
 /**
  * end admin routes
+ */
+
+/**
+ * config route kiểu mới
+ */
+app.use('/api', RouterV1)
+/**
+ * end config route kiểu mới
  */
 
 export default app
