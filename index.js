@@ -4,6 +4,7 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import express from 'express'
 import AdminRoutes from './src/routers'
+import initPublicRoute from './src/routers/initPublicRoute'
 import PrivateRoute from './src/routers/private'
 import RouterV1 from './src/routers/v1'
 
@@ -72,5 +73,11 @@ app.use('/api', RouterV1)
 /**
  * end config route kiểu mới
  */
+
+/**
+ * config route theo 1 cách khác nữa
+ */
+
+initPublicRoute(app)
 
 export default app
