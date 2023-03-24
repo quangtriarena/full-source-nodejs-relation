@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node --inspect server.js",
+    "start": "cross-env NODE_ENV=production nodemon --exec babel-node --inspect server.js --port 5006",
     "test": "echo \"Error: no test specified\" && exit 1",
     "ngrok": "ngrok http --subdomain=arena-app-tt --region=ap 8080",
     "dev": "concurrently \"yarn ngrok\" \"yarn start\"",
@@ -12,25 +12,39 @@
     "bulk_categories": "node ./src/mocks/categoryGenerate.js",
     "bulk_stores": "node ./src/mocks/storeGenerate.js",
     "bulk_product_store": "node ./src/mocks/productStoreGenerate.js",
+    "bulk_customer": "node ./src/mocks/customerGenerate.js",
+    "bulk_store_setting": "node ./src/mocks/storeSettingGenerate.js",
+    "bulk_product_shopify": "node ./src/mocks/productShopifyGenerate.js",
+    "bulk_wishlist": "node ./src/mocks/wishlistGenerate.js",
+    "bulk_wishlist_product": "node ./src/mocks/wishlistProductGenerate.js",
+    "bulk_wishlist_customer": "node ./src/mocks/wishlistCustomerGenerate.js",
     "prettier:code": "prettier \"**/*.{js,jsx}\"",
-    "format:code": "npm run prettier:code -- --write"
+    "format:code": "npm run prettier:code -- --write",
+    "server": "nodemon --exec babel-node --inspect server.js --port 5006",
+    "build": "babel src server.js index.js -d build --copy-files",
+    "pm2":"pm2 start ./build/server.js --exp-backoff-restart-delay=100"
+
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/cli": "^7.21.0",
     "axios": "^1.2.2",
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.1",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
+    "ejs": "^3.1.9",
     "express": "^4.18.2",
     "http-errors": "^2.0.0",
     "joi": "^17.8.3",
     "jsonwebtoken": "^9.0.0",
     "morgan": "^1.10.0",
+    "nonce": "^1.0.4",
     "pg": "^8.8.0",
     "pg-hstore": "^2.3.4",
+    "pm2": "^5.3.0",
     "sequelize": "^6.28.0",
     "swagger-ui-express": "^4.6.2"
   },
@@ -39,6 +53,8 @@
     "@babel/node": "^7.20.7",
     "@babel/preset-env": "^7.20.2",
     "concurrently": "^7.6.0",
+    "cross-env": "^7.0.3",
+    "node-env-run": "^4.0.2",
     "nodemon": "^2.0.20",
     "prettier": "^2.8.3"
   }

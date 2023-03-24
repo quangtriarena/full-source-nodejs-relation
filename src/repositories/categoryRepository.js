@@ -7,6 +7,7 @@ const CategoryRepositories = {
   count: async () => {
     try {
       const counts = await CategoryModel.count()
+
       return {
         counts,
       }

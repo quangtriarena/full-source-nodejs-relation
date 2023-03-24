@@ -1,4 +1,4 @@
-GET http://localhost:8080/api/products
+GET http://localhost:5003/api/products
 
 ###
 
@@ -45,4 +45,10 @@ GET  http://localhost:8080/api/v1/images
 
 
 ###
-GET http://localhost:8080/api/v2/products
+GET http://localhost:5006/api/products
+
+###
+GET http://localhost:5006/api/v1/wishlists
+
+###
+GET http://localhost:5006/api/v1/customers

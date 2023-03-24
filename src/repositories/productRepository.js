@@ -4,10 +4,13 @@ import StoreModel from '../models/storeModel.js'
 import { Op } from 'sequelize'
 
 const include = [
-  { model: CategoryModel },
+  { model: CategoryModel, attributes: ['id', 'category_name', 'category_description'] },
   {
     model: StoreModel,
     attributes: ['id', 'name', 'address'],
+    through: {
+      attributes: [],
+    },
   },
 ]
 
